@@ -298,5 +298,10 @@ int main()
         }
     }
 
+    //TODO this
+    printf("\n################################\n");
+    printf("######## 3)\n");
+    printf("a faire...\n");
+
     return 0;
 }
