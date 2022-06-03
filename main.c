@@ -230,10 +230,9 @@ int main()
     }
 
     printf("\n######## 1.4)\n");
-    printf("10 * 12 * 12 = %d octets\n", 10 * 12 * 12);
-    printf(" + pointeurs vers chaque ligne : 10 * 8 = %d octets\n", 10 * 8);
-    printf(" + pointeur vers matrice : 8 octets\n");
-    printf("TOTAL = %d\n", (10 * 12 * 12) + (10 * 8) + 8);
+    printf("col * ligne * sizeof(C1) : 10 * 12 * 12 = 1440 octets\n");
+    printf(" + pointeurs vers chaque ligne : 10 * 8 = 80 octets\n");
+    printf("TOTAL = 1520\n");
 
     /*
      * on réserve 12 octets par struct C1, soit 10*12*12 octets, soit 1440 octets
