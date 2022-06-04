@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 struct C1
 {
@@ -100,70 +99,7 @@ struct C1 **CreerU(struct C1 **T, int n)
     return res;
 }
 
-int *CompteLignes(char *filename, int *n)
-{
-    // ouvre fichier
-    FILE *fp = NULL;
-    fp = fopen(filename, "r");
 
-    if (fp == NULL)
-    {
-//        printf("Error: %d (%s)\n", errno, strerror(errno));
-        return NULL;
-    }
-
-    // compte les lignes
-    int line_count = 0;
-    int ch;
-    while (!feof(fp))
-    {
-        ch = fgetc(fp);
-        if (ch == '\n')
-        {
-            line_count++;
-        }
-    }
-    // ferme fichier
-    fclose(fp);
-
-    // créé le tableau de resultats de taille (nb_lignes)
-    int *res = NULL;
-    res = (int *) malloc(sizeof(int) * line_count);
-    if (res == NULL)
-    {
-        printf("malloc error\n");
-        return NULL;
-    }
-
-    // ouvre fichier à nouveau (curseur se place au début)
-    fp = NULL;
-    fp = fopen(filename, "r");
-
-    if (fp == NULL)
-    {
-//        printf("Error: %d (%s)\n", errno, strerror(errno));
-        return NULL;
-    }
-
-    // compte les caracteres et enregistre les positions des '\n'
-    int char_count = 0;
-    int i          = 0;
-    while (!feof(fp))
-    {
-        ch = fgetc(fp);
-        if (ch == '\n')
-        {
-            res[i] = char_count;
-            i++;
-        }
-        char_count++;
-    }
-    // ferme fichier
-    fclose(fp);
-
-    *n = line_count;
-    return res;
-}
 
 int main()
 {
