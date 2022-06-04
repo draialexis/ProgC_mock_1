@@ -108,12 +108,12 @@ int *CompteLignes(char *filename, int *n)
 
     if (fp == NULL)
     {
-        printf("Error: %d (%s)\n", errno, strerror(errno));
+//        printf("Error: %d (%s)\n", errno, strerror(errno));
         return NULL;
     }
 
     // compte les lignes
-    int line_count = 1;
+    int line_count = 0;
     int ch;
     while (!feof(fp))
     {
@@ -141,7 +141,7 @@ int *CompteLignes(char *filename, int *n)
 
     if (fp == NULL)
     {
-        printf("Error: %d (%s)\n", errno, strerror(errno));
+//        printf("Error: %d (%s)\n", errno, strerror(errno));
         return NULL;
     }
 
@@ -161,7 +161,7 @@ int *CompteLignes(char *filename, int *n)
     // ferme fichier
     fclose(fp);
 
-    *n = line_count - 1;
+    *n = line_count;
     return res;
 }
 
@@ -272,8 +272,9 @@ int main()
     printf("\n################################\n");
     printf("######## 2)\n");
 
-
-    int *test3 = CompteLignes("D:\\Docs\\Dev\\ProgC_mock_1\\files\\testfile.txt", &n); // pas probleme
+    char *path = "D:\\Docs\\Dev\\ProgC_mock_1\\files\\testfile.txt";
+    printf("reading from %s\n", path);
+    int *test3 = CompteLignes(path, &n); // pas probleme
     if (test3 == NULL)
     {
         printf("probleme\n");
@@ -285,7 +286,10 @@ int main()
         }
     }
 
-    int *test4 = CompteLignes("D:\\Docs\\Dev\\ProgC_mock_1\\files\\testdfile.txt", &n); // probleme
+    //TODO ajoute ton propre path pour tester
+    path = "azefyug uioaz fguyiaz";
+    printf("reading from %s\n", path);
+    int *test4 = CompteLignes(path, &n); // probleme
     if (test4 == NULL)
     {
         printf("probleme\n");
